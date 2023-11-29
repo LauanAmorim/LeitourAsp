@@ -1,28 +1,67 @@
-﻿
+﻿@model List<webleitour.Container.Models.Book>
+
 @{
     Layout = "~/Views/Shared/_LayoutMenu.cshtml";
 }
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="~/Content/SavedBook.css" rel="stylesheet" />
+    <title>Saved Books</title>
+    <style>
+        .savedbooks {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .book {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+ 
+
+        main.savedbooks {
+            display: grid;
+            grid-template-columns: repeat(4, 0.1fr);
+            grid-template-rows: repeat(4, 0.1fr);
+            gap: 1rem;
+        }
+
+        img {
+            object-fit: cover;
+        }
+
+    </style>
 </head>
 <body>
-            <section class="booksSaved">
-            <main class="savedbooks">
+    <section class="booksSaved">
+        <main class="savedbooks">
+            @foreach (var book in Model)
+            {
                 <div class="saved">
                     <div class="book">
-                        <a href="#">
-                            <img src="https://placehold.co/164x242" width="164px" height="242px" alt="book cover">
-                            <h1>Titulo</h1>
-                        </a>
-                    </div>
+                        @{
+                            var isbn = !string.IsNullOrEmpty(book.ISBN_13) ? book.ISBN_13 : (!string.IsNullOrEmpty(book.ISBN_10) ? book.ISBN_10 : "");
+                        }
+                        @if (!string.IsNullOrEmpty(isbn))
+                        {
+                            <a href="@Url.Action("BookPage", "Book", new { ISBN = isbn })" class="book-link">
+                                <img src="@book.Cover" width="164px" height="242px" alt="book cover">
+                                <h1>@book.Title</h1>
+                                <p>@book.Authors</p>
+                            </a>
+                        }
+                        </div>
                 </div>
-            </main>
-        </section>
-    </main>
+            }
+        </main>
+    </section>
 </body>
 </html>

@@ -9,6 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="~/Content/BookPage.css" rel="stylesheet" />
+    <style>
+    </style>
 </head>
 <body>
         <section class="bookPage">
@@ -128,7 +130,7 @@
     if (salvarLivroBtn) {
         salvarLivroBtn.addEventListener('click', function () {
             const bookData = {
-                bookKey: '@Model.Key',
+                bookKey: '@Model.key',
                 bookCover: '@Model.Cover',
                 bookTitle: '@Model.Title'
             };
@@ -146,11 +148,11 @@
                     userId: userId,
                     public: true,
                     bookKey: bookData.bookKey,
-                    bookCover: bookData.bookCover,
+                    bookCover: "Cover",
                     bookTitle: bookData.bookTitle
                 })
             };
-
+            console.log(requestOptions);
             fetch('https://localhost:5226/api/savedbooks', requestOptions)
                 .then(response => {
                     if (!response.ok) {
@@ -169,8 +171,6 @@
             if (parts.length === 2) return parts.pop().split(';').shift();
         }
     });
-
-
 
     </script>
 

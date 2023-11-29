@@ -7,7 +7,7 @@ namespace webleitour.Container.Models
 {
     public class Book
     {
-        public string Key { get; set; }
+        public string key { get; set; }
         public string Title { get; set; }
         public string Authors { get; set; }
         public string Publisher { get; set; }

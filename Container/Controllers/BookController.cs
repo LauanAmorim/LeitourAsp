@@ -6,6 +6,8 @@ using Newtonsoft.Json;
 using webleitour.Container.Models;
 using NLog;
 using System.Collections.Generic;
+using System.Linq;
+using Newtonsoft.Json.Linq;
 
 namespace webleitour.Container.Controllers
 {
@@ -22,7 +24,6 @@ namespace webleitour.Container.Controllers
             httpClient.DefaultRequestHeaders.Accept.Clear();
             httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
         }
-
         public async Task<ActionResult> BookPage(string ISBN)
         {
             if (!string.IsNullOrEmpty(ISBN))
@@ -65,7 +66,62 @@ namespace webleitour.Container.Controllers
             }
         }
 
-        public ActionResult SavedBooks() { return View(); }
+        public async Task<ActionResult> SavedBooks()
+        {
+            string baseUrl = "https://localhost:5226";
+
+            if (Request.Cookies["AuthToken"] != null)
+            {
+                string token = Request.Cookies["AuthToken"].Value;
+                httpClient.DefaultRequestHeaders.Add("token", token);
+            }
+            else
+            {
+                return RedirectToAction("HandleMissingToken");
+            }
+
+            HttpResponseMessage savedBooksResponse = await httpClient.GetAsync($"{baseUrl}/api/SavedBooks");
+            logger.Info($"SAVED BOOK RESPONDE {savedBooksResponse}");
+
+            if (savedBooksResponse.IsSuccessStatusCode)
+            {
+                string savedBooksJson = await savedBooksResponse.Content.ReadAsStringAsync();
+                var savedBooks = JArray.Parse(savedBooksJson);
+
+                List<Book> booksDetails = new List<Book>();
+
+                foreach (var book in savedBooks)
+                {
+                    var bookKey = (string)book["bookKey"];
+
+                    HttpResponseMessage bookDetailsResponse = await httpClient.GetAsync($"{baseUrl}/api/SearchBy/Key/{bookKey}");
+                    logger.Info($"BOOK DETAILS RESPONDE {bookDetailsResponse}");
+
+                    if (bookDetailsResponse.IsSuccessStatusCode)
+                    {
+                        string bookDetailsJson = await bookDetailsResponse.Content.ReadAsStringAsync();
+                        var bookDetails = JsonConvert.DeserializeObject<Book>(bookDetailsJson);
+
+                        booksDetails.Add(bookDetails);
+                    }
+                    else
+                    {
+                        logger.Error($"Failed to fetch details for book with key {bookKey}. Status code: {bookDetailsResponse.StatusCode}");
+                    }
+
+                }
+
+                return View(booksDetails);
+            }
+            else
+            {
+                logger.Error($"Failed to fetch saved books. Status code: {savedBooksResponse.StatusCode}");
+                return RedirectToAction("Error");
+            }
+        }
+
+
+
 
         public async Task<ActionResult> Annotation()
         {

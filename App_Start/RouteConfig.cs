@@ -18,13 +18,6 @@ namespace webleitour
                 url: "Book/bookpage/{ISBN}",
                 defaults: new { controller = "Book", action = "BookPage", ISBN = UrlParameter.Optional }
             );
-
-            routes.MapRoute(
-                name: "Registrar",
-                url: "User/Registrar",
-                defaults: new { controller = "User", action = "Registrar" }
-            );
-
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
