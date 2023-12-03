@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using webleitour.Container.Models;
 using System.Text;
+using NLog;
 
 namespace webleitour.Controllers
 {
     public class PostController : Controller
     {
         private readonly string apiUrl = "https://localhost:5226/api/posts";
+        private static Logger logger = LogManager.GetCurrentClassLogger();
 
 
         [HttpPost]
@@ -21,13 +23,13 @@ namespace webleitour.Controllers
             int userId;
             if (Request.Cookies["UserID"] != null && int.TryParse(Request.Cookies["UserID"].Value, out userId))
             {
-                var newPost = new
+                var newPost = new Post
                 {
-                    id = 0,
-                    userId = userId,
-                    messagePost = feedPost,
-                    postDate = DateTime.UtcNow,
-                    alteratedDate = DateTime.UtcNow
+                    Id = 0,
+                    UserId = userId,
+                    MessagePost = feedPost,
+                    PostDate = DateTime.UtcNow,
+                    AlteratedDate = DateTime.UtcNow
                 };
 
                 using (HttpClient client = new HttpClient())
@@ -60,6 +62,7 @@ namespace webleitour.Controllers
                 return RedirectToAction("Index", "User");
             }
         }
+
         public async Task<ActionResult> Post()
         {
             int userId;
@@ -76,7 +79,7 @@ namespace webleitour.Controllers
                     if (Request.Cookies["AuthToken"] != null)
                     {
                         string token = Request.Cookies["AuthToken"].Value;
-                        client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                        client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("token", token);
                     }
 
                     HttpResponseMessage responseUser = await client.GetAsync(apiUrlUser);
@@ -110,6 +113,12 @@ namespace webleitour.Controllers
                 ViewBag.ErrorMessage = "O ID do usuário não está presente no cookie.";
                 return RedirectToAction("Index", "User");
             }
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Comment()
+        {
+            return View(new Post());
         }
 
         public async Task<ActionResult> SearchResult(string query)

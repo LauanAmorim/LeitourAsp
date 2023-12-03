@@ -125,7 +125,7 @@
         });
 
         document.addEventListener("DOMContentLoaded", function () {
-    const salvarLivroBtn = document.querySelector('.btn.Salvar');
+        const salvarLivroBtn = document.querySelector('.btn.Salvar');
 
     if (salvarLivroBtn) {
         salvarLivroBtn.addEventListener('click', function () {
@@ -145,11 +145,13 @@
                     'token': `${token}`
                 },
                 body: JSON.stringify({
+                    createdDate: "2023-12-02T14:35:17.098Z",
                     userId: userId,
                     public: true,
                     bookKey: bookData.bookKey,
                     bookCover: "Cover",
-                    bookTitle: bookData.bookTitle
+                    bookTitle: bookData.bookTitle,
+                    bookAuthor: "data"
                 })
             };
             console.log(requestOptions);

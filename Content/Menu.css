@@ -181,8 +181,18 @@ aside {
     font-style: normal;
     font-weight: 600;
     align-items: center;
+    width: 100%;
+    justify-content: space-between;
 }
 
+.btn-leave path {
+    transition: 0.5s;
+}
+
+.btn-leave:hover path {
+    fill: rgb(255, 71, 71);
+    transition: 0.5s;
+}
 .user-menu--user-data {
     display: flex;
     flex-direction: column;

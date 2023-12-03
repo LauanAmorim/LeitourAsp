@@ -8,48 +8,33 @@
 <div class="main-section" id="main-section">
     <div class="container-login">
         <div class="login right-login gap2">
-            <img src="~/Images/LogoLeitour.svg" alt="Logo">
-            <form asp-controller="User" asp-action="NewAccount" method="get">
-                @Html.ActionLink("Nova Conta", "Registrar", "User", new {id="newAccountButton"})
-            </form>
             <div class="login-img">
-            <img src="~/Images/LogoLeitour.svg" alt="Logo">
+                <img src="~/Images/LogoLeitour.svg" alt="Logo">
             </div>
             <div class="new-account-button">
-                <form asp-controller="User" asp-action="NewAccount" method="get">
                     <button type="submit" id="newAccountButton">Nova Conta</button>
-                </form>
             </div>
         </div>
 
         <div class="login left-login gap">
             <h1>Login</h1>
             <h3>Seja bem-vindo a Leitour</h3>
-                @using (Html.BeginForm("Login", "User", FormMethod.Post))
-                {
-                    <div class="form-login">
-                        <div class="email-login">
-                            
-                            @Html.EditorFor(model => model.Email, new {placeholder="Email"})
-                        </div>
-                        <div class="password-login">
-                            
-                            @Html.PasswordFor(model => model.Password, new { placeholder = "Password" })
-                        </div>
-                        <div class="button-login">
-                            <input type="submit" value="Logar" id="loginButton">
-                            <span class="email-login-span">@@</span>
-                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { placeholder = "leitour@gmail.com" } })
-                        </div>
-                        <div class="password-login">
-                            <span class="password-login-span"><img src="~/Images/key.svg"></span>
-                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { placeholder = "Min. 8 caracteres" } })
-                        </div>
-                        <div class="button-login">
-                            <input type="submit" value="Enviar" id="loginButton">
-                        </div>
+            @using (Html.BeginForm("Login", "User", FormMethod.Post))
+            {
+                <div class="form-login">
+                    <div class="email-login">
+                        <span class="email-login-span">@@</span>
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { placeholder = "leitour@gmail.com" } })
                     </div>
-                }
+                    <div class="password-login">
+                        <span class="password-login-span"><img src="~/Images/key.svg"></span>
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { placeholder = "Min. 8 caracteres" } })
+                    </div>
+                    <div class="button-login">
+                        <input type="submit" value="Enviar" id="loginButton">
+                    </div>
+                </div>
+            }
         </div>
     </div>
 </div>
@@ -60,7 +45,6 @@
         padding: 0;
         margin: 0;
         box-sizing: border-box;
-        font-family: Arial;
     }
 
     a {
@@ -140,11 +124,13 @@
         align-items: center;
         border-left: 4px solid #D3CBCB;
     }
+
     .login-img {
-       display: flex;
-       width:128px;
-       height:156px;
+        display: flex;
+        width: 128px;
+        height: 156px;
     }
+
     .rememberAndPassword {
         display: flex;
     }
@@ -163,7 +149,9 @@
         color: #FFF;
         text-align: center;
         font-size: 14px;
+        font-style: normal;
         font-weight: 700;
+        line-height: normal;
         cursor: pointer;
     }
 
@@ -186,7 +174,6 @@
         font-weight: 700;
         line-height: normal;
         cursor: pointer;
-        padding: 1rem;
     }
 
     .form-login {
@@ -213,6 +200,7 @@
     #email {
         height: 100%;
         width: 100%;
+        border-radius: 20px;
         border: none;
         padding-left: 20px;
         font-size: 20px;
@@ -234,7 +222,7 @@
         font-family: Outfit;
         display: flex;
         color: #1358E3;
-        font-size: 32px;
+        font-size: 36px;
         width: 16%;
         height: 100%;
         text-align: center;
@@ -257,6 +245,7 @@
     #password {
         height: 100%;
         width: 100%;
+        border-radius: 20px;
         border: none;
         padding-left: 20px;
         font-size: 20px;
@@ -270,12 +259,10 @@
         }
 
     .password-login-span {
-        display:flex;
-        height: 100%;
+        position: relative;
         width: 16%;
-        text-align: center;
-        justify-content: center;
-        align-items: center;
+        left: 4%;
+        top: 32%;
         border-left: 4px #4D4D4E;
     }
 
