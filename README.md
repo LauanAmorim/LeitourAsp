@@ -12,9 +12,9 @@ Essas instruções permitirão que você obtenha uma cópia do projeto em opera�
 
 De que coisas você precisa para instalar o software e como instalá-lo?
 
-1. Primeiramente, siga as instruções e instale a API da Leitour.
+1. Primeiramente, siga as instruções e instale a [API da Leitour](https://github.com/LauanAmorim/LeitourApi/).
 2. Certifique-se de que a API está rodando em sua máquina.
-3. Clone o projeto git clone https://github.com/LauanAmorim/LeitourAsp.git
+3. Clone o projeto `git clone https://github.com/LauanAmorim/LeitourAsp.git`
 4. Certifique-se que o projeto esteja rodando na porta 44398 (http://localhost:44398)
 5. Execute o programa na raiz do projeto, ou o arquivo webleitour.csproj
 
