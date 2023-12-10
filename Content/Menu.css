@@ -149,30 +149,6 @@ aside {
     padding: 0 1rem;
 }
 
-.user-content--user-info > .post-content--data > .username > h2 {
-    color: #4D4D4E;
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-}
-
-.user-content--user-info > .post-content--data > .username > h3 {
-    color: #A6A6A6;
-    font-size: 0.9rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    padding: 0rem 0.4rem;
-}
-
-.user-content--user-info > .post-content--data > .username {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-}
-
-
 .user-menu--btn {
     display: flex;
     flex-direction: row;

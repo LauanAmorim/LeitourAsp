@@ -9,6 +9,7 @@
 
 body {
     max-width: 100vw;
+    overflow-x: hidden;
 }
 
 input, textarea {
@@ -348,4 +349,69 @@ body > main > aside > div > a.menu-feed--btn > img {
 
 .recommended {
     padding: 1rem;
+}
+
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+body > main > section > div.book-info > div > div.btnBook > button, body > main > section > div.book-info > div > div.btnBook > a {
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.post-box {
+    width: 600px;
+    height: fit-content;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 1rem;
+    padding: 1.2em 1.2em;
+    border-radius: 1em;
+    border-radius: 10px;
+    border: 2px solid #F4F4F4;
+    background: #FFF;
+}
+
+body > main > section > div.book-info > div > div:nth-child(6) {
+    width: 600px;
+    height: fit-content;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 1rem;
+    padding: 1.2em 1.2em;
+    border-radius: 1em;
+    border-radius: 10px;
+    border: 2px solid #F4F4F4;
+    background: #FFF;
+}
+
+#annotationForm {
+    display: flex;
+    width: 600px;
+    height: fit-content;
+    margin: 1rem;
+    padding: 1.2em 1.2em;
+    border-radius: 1em;
+    border: 2px solid #F4F4F4;
+    background: #FFF;
+    resize: none;
+    flex-direction: row;
+    align-items: center;
+}
+
+input, textarea {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    resize: none;
+}
+
+.post-textarea > button {
+    height: 30px;
+    width: 120px;
+    margin: 0 20px;
 }

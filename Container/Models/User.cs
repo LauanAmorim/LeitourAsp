@@ -16,6 +16,8 @@ namespace webleitour.Container.Models
         [EmailAddress]
         public string email { get; set; }
 
+        public string bio { get; set; }
+
         [Required]
         [DataType(DataType.Password)]
         public string password { get; set; }

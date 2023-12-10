@@ -1,0 +1,109 @@
+﻿.section-comentario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.post-textarea {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    height: fit-content;
+    justify-content: flex-start;
+    align-items: flex-end;
+    margin: 1rem;
+    padding: 1.2em 1.2em;
+    border-radius: 1em;
+    border: 2px solid #F4F4F4;
+    background: #FFF;
+    resize: none;
+}
+
+
+input, textarea {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    resize: none;
+}
+
+.post-textarea > button {
+    height: 30px;
+    width: 120px;
+    margin: 0 20px;
+}
+
+.post-box {
+    width: 600px;
+    height: fit-content;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 1rem;
+    padding: 1.2em 1.2em;
+    border-radius: 1em;
+    border-radius: 10px;
+    border: 2px solid #F4F4F4;
+    background: #FFF;
+}
+
+.post-content--data {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem;
+}
+
+.post-content > p {
+    padding: 0.4rem 0;
+    max-width: 450px;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+.post-interact {
+    width: 100%;
+    height: 100%;
+    padding: 1em 0em;
+    display: flex;
+}
+
+    .post-interact button {
+        cursor: pointer;
+        background: none;
+        margin: 0em 2em;
+    }
+
+button.btn-like {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+span.likes-count {
+    padding: 0 0.3rem;
+}
+
+
+.user-content--user-info > .post-content--data > .username > h2 {
+    color: #4D4D4E;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.user-content--user-info > .post-content--data > .username > h3 {
+    color: #A6A6A6;
+    font-size: 0.9rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding: 0rem 0.4rem;
+}
+
+.user-content--user-info > .post-content--data > .username {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}

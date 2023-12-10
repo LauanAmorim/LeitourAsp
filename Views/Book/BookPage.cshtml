@@ -10,6 +10,422 @@
     <title>Document</title>
     <link href="~/Content/BookPage.css" rel="stylesheet" />
     <style>
+        * {
+            border: 0;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+
+        input, textarea {
+            outline: none;
+        }
+
+        button {
+            background: none;
+            cursor: pointer;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 5.56rem;
+            padding: 0 1.44rem;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+        }
+
+            .nav-logo img {
+                margin-right: 1rem;
+            }
+
+        .nav-searchbar {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            border-radius: 15px;
+            border: 2px solid #EEE;
+            background: #FAFAFB;
+            width: 523px;
+            padding: 0px 1.6rem;
+        }
+
+            .nav-searchbar ~ .search-input {
+                width: 100%;
+                height: 27px;
+                flex-shrink: 0;
+            }
+
+        .search-input {
+            width: 523px;
+            height: 47px;
+            margin: 0px 0px 0px 7.37%;
+            background: none;
+        }
+
+        .main {
+            display: grid;
+            grid-template-columns: 16.25rem 1fr;
+            background-color: #FAFAFB;
+        }
+
+        aside {
+            width: 17rem;
+            height: 935px;
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+            .menu > .user {
+                margin: 1.5rem 0rem;
+                display: flex;
+                padding: 2rem 1rem;
+                align-items: center;
+                border-radius: 20px;
+                border: 2px solid #EEE;
+                background: #FAFAFB;
+                width: 220px;
+                height: 65px;
+            }
+
+        .user-content--user-info {
+            display: flex;
+            padding: 0.4em 0em;
+        }
+
+        .user-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid black;
+        }
+
+        .user-menu--user-data {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0 1rem;
+        }
+
+        .user-content--user-info > .post-content--data > .username > h2 {
+            color: #4D4D4E;
+            font-size: 1rem;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+        }
+
+        .user-content--user-info > .post-content--data > .username > h3 {
+            color: #A6A6A6;
+            font-size: 0.9rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            padding: 0rem 0.4rem;
+        }
+
+        .user-content--user-info > .post-content--data > .username {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+        }
+
+
+        .user-menu--btn {
+            display: flex;
+            flex-direction: row;
+            color: #4D4D4E;
+            font-size: 0.9rem;
+            font-style: normal;
+            font-weight: 600;
+            align-items: center;
+        }
+
+        .user-menu--user-data {
+            display: flex;
+            flex-direction: column;
+        }
+
+        body > main > aside > div > a.menu-feed--btn > img {
+            padding: 0rem 1rem;
+        }
+
+        .menu-feed--btn {
+            width: 100%;
+            height: 4.125rem;
+            background: #FFF;
+            color: #37373A;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin: 0.3em 0em;
+            padding: 0px 2rem;
+        }
+
+        .btnSelected {
+            width: 103%;
+            color: #1358E3;
+            font-weight: bolder;
+            border-radius: 0px 10px 10px 0px;
+            background: #FFF;
+            box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.30);
+        }
+
+
+        /*FIM MENU CSS*/
+        .bookPage {
+            display: grid;
+            grid-template-columns: 1fr 0.5fr;
+        }
+
+        .book-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+        }
+
+            .book-info h2 {
+                color: #4D4D4E;
+                font-weight: 600;
+                line-height: normal;
+            }
+
+            .book-info h3 {
+                color: #1358E3;
+                font-weight: 400;
+                line-height: normal;
+            }
+
+        .book-release {
+            display: flex;
+            height: 100%;
+            padding: 3rem;
+            flex-direction: column;
+        }
+
+        .book-release--info {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .release-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .btnBook {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+        }
+
+        .btn {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            text-align: center;
+            align-items: center;
+            height: 80px;
+            width: 80px;
+            cursor: pointer;
+        }
+
+            .btn img {
+                height: 42px;
+                width: 42px;
+            }
+
+
+        .book-description > h3 {
+            color: #4D4D4E;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 1rem;
+            line-height: normal;
+            padding: 1rem;
+        }
+
+            .book-description > h3 > span {
+                color: #1358E3;
+            }
+
+        .book-description > p {
+            padding: 1rem;
+        }
+
+        .book-recommendation {
+            display: flex;
+            width: 120px;
+            flex-direction: column;
+        }
+
+        .book-category {
+            display: flex;
+            flex-direction: row;
+            overflow-x: auto;
+            max-width: 500px;
+        }
+
+        .category {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            max-width: 102px;
+            height: 28px;
+            border-radius: 1.25rem;
+            border: 1px solid #F3AF00;
+            background: rgba(243, 175, 0, 0.20);
+            color: #F3AF00;
+            font-size: 0.75rem;
+            font-weight: 400;
+            line-height: normal;
+            padding: 1rem;
+            margin: 0 0.3rem;
+        }
+
+        .book-img {
+            padding: 1rem;
+            display: flex;
+            max-width: 100%;
+            flex-direction: column;
+        }
+
+        .imgcover {
+            height: 490px;
+            width: 320px;
+        }
+
+        .recommendation {
+            display: flex;
+            flex-direction: row;
+            padding: 1rem;
+            width: 320px;
+            overflow-x: scroll;
+            cursor: grab;
+        }
+
+            .recommendation > .recommendation-info > .category-recommendation > .category {
+                max-width: 100px;
+                min-height: 15px;
+                text-align: center;
+                font-size: 1rem;
+                font-weight: 400;
+                line-height: normal;
+                margin: 0;
+            }
+
+        .recommendation-info {
+            color: #4D4D4E;
+            padding: 1rem;
+            font-size: 1.2rem;
+            font-weight: 500;
+            line-height: normal;
+        }
+
+        .book-img > div > h4 > span {
+            color: #1358E3;
+        }
+
+        .recommended {
+            padding: 1rem;
+        }
+
+        a, a:hover, a:focus, a:active {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        body > main > section > div.book-info > div > div.btnBook > button, body > main > section > div.book-info > div > div.btnBook > a {
+            font-size: 0.9rem;
+            text-decoration: none;
+        }
+
+        .post-box {
+            width: 600px;
+            height: fit-content;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin: 1rem;
+            padding: 1.2em 1.2em;
+            border-radius: 1em;
+            border-radius: 10px;
+            border: 2px solid #F4F4F4;
+            background: #FFF;
+        }
+
+        body > main > section > div.book-info > div > div:nth-child(6) {
+            width: 600px;
+            height: fit-content;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin: 1rem;
+            padding: 1.2em 1.2em;
+            border-radius: 1em;
+            border-radius: 10px;
+            border: 2px solid #F4F4F4;
+            background: #FFF;
+        }
+
+        #annotationForm {
+            display: flex;
+            width: 600px;
+            height: fit-content;
+            margin: 1rem;
+            padding: 1.2em 1.2em;
+            border-radius: 1em;
+            border: 2px solid #F4F4F4;
+            background: #FFF;
+            resize: none;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        input, textarea {
+            width: 100%;
+            height: 100%;
+            outline: none;
+            resize: none;
+        }
+
+        .post-textarea > button {
+            height: 30px;
+            width: 120px;
+            margin: 0 20px;
+        }
     </style>
 </head>
 <body>
@@ -47,10 +463,10 @@
                             <img src="~/Images/BotaoSave-2.svg" alt="Salvar Livro">
                             Salvar livro
                         </button>
-                        <button class="btn Anotacao">
+                        <a href="#annotationForm" class="btn Anotacao">
                             <img src="~/Images/BotaoAnnotation.svg" alt="Anotacao">
                             Anotação
-                        </button>
+                        </a>
                     </div>
 
                     <div class="book-description">
@@ -59,6 +475,33 @@
                         <div class="book-category">
                             <div class="category">
                                 #Categoria
+                            </div>
+                        </div>
+                    </div>
+                    <div class="anotacao-campo">
+                        @using (Html.BeginForm("CreateAnnotation", "Book", FormMethod.Post, new { id = "annotationForm" }))
+                        {
+                            <div class="post-textarea">
+                                @Html.TextArea("AnnotationText", null, new { @class = "Comment-text", maxlength = "250", placeholder = "Escreva um comentário" })
+                                <input type="hidden" name="bookKey" value="@Model.key" />
+                                <input type="hidden" name="bookSavedId" value="" />
+                                <input type="hidden" name="bookIsbn10" value="@Model.ISBN_10" />
+                                <input type="hidden" name="bookIsbn13" value="@Model.ISBN_13" />
+                                <button type="submit">Anotar</button>
+                            </div>
+                        }
+                    </div>
+                    <div class="post-box annotation" style="display:none;">
+                        <div class="post-box--user-content">
+                            <div class="user-content--user-info">
+                                <div class="post-content--data">
+                                    <div class="username">
+                                        <h2>/ •</h2> <span hidden class="post-user--id">/</span>
+                                        <h3>@@User</h3>
+                                    </div>
+                                    <div class="post-content">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -96,36 +539,38 @@
     </main>
 
 
-    <script>
+        <script>
         const recommendation = document.querySelector('.recommendation');
-        let isDown = false;
-        let startX;
-        let scrollLeft;
+let isDown = false;
+let startX;
+let scrollLeft;
 
-        recommendation.addEventListener('mousedown', (e) => {
-            isDown = true;
-            recommendation.classList.add('active');
-            startX = e.pageX - recommendation.offsetLeft;
-            scrollLeft = recommendation.scrollLeft;
-        });
-        recommendation.addEventListener('mouseleave', () => {
-            isDown = false;
-            recommendation.classList.remove('active');
-        });
-        recommendation.addEventListener('mouseup', () => {
-            isDown = false;
-            recommendation.classList.remove('active');
-        });
-        recommendation.addEventListener('mousemove', (e) => {
-            if (!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - recommendation.offsetLeft;
-            const walk = (x - startX) * 3;
-            recommendation.scrollLeft = scrollLeft - walk;
-        });
+recommendation.addEventListener('mousedown', (e) => {
+    isDown = true;
+    recommendation.classList.add('active');
+    startX = e.pageX - recommendation.offsetLeft;
+    scrollLeft = recommendation.scrollLeft;
+});
+recommendation.addEventListener('mouseleave', () => {
+    isDown = false;
+    recommendation.classList.remove('active');
+});
+recommendation.addEventListener('mouseup', () => {
+    isDown = false;
+    recommendation.classList.remove('active');
+});
+recommendation.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - recommendation.offsetLeft;
+    const walk = (x - startX) * 3;
+    recommendation.scrollLeft = scrollLeft - walk;
+});
 
-        document.addEventListener("DOMContentLoaded", function () {
-        const salvarLivroBtn = document.querySelector('.btn.Salvar');
+            document.addEventListener("DOMContentLoaded", function () {
+
+
+    const salvarLivroBtn = document.querySelector('.btn.Salvar');
 
     if (salvarLivroBtn) {
         salvarLivroBtn.addEventListener('click', function () {
@@ -138,7 +583,7 @@
             const token = getCookie('AuthToken');
             const userId = getCookie('UserID');
 
-            const requestOptions = {
+            let requestOptions = {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -154,27 +599,136 @@
                     bookAuthor: "data"
                 })
             };
+
             console.log(requestOptions);
             fetch('https://localhost:5226/api/savedbooks', requestOptions)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Failed to save book');
                     }
+                    else {
+                        window.alert("Livro salvo!");
+                        window.location.reload();
+                    }
                 })
                 .catch(error => {
                     console.error('Error saving book:', error);
                 });
+        });
+    }
+
+    const bookSavedIdInput = document.querySelector('input[name="bookSavedId"]');
+    const bookKeyInput = document.querySelector('input[name="bookKey"]');
+
+    function fetchAndDisplayAnnotations(bookId) {
+        const token = getCookie('AuthToken');
+
+        const requestOptions = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'token': token
+            }
+        };
+
+        console.log(bookSavedIdInput.value);
+        fetch(`https://localhost:5226/api/Annotations/SavedBook/${bookId}`, requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                const bookRelease = document.querySelector('.book-release');
+
+                data.forEach(annotation => {
+                    const postBox = document.createElement('div');
+                    postBox.classList.add('post-box', 'annotation');
+
+                    const userContent = document.createElement('div');
+                    userContent.classList.add('post-box--user-content');
+
+                    const userInfo = document.createElement('div');
+                    userInfo.classList.add('user-content--user-info');
+
+                    const postData = document.createElement('div');
+                    postData.classList.add('post-content--data');
+
+                    const postContent = document.createElement('div');
+                    postContent.classList.add('post-content');
+
+                    const paragraph = document.createElement('p');
+                    paragraph.textContent = annotation.annotationText;
+
+                    postContent.appendChild(paragraph);
+                    postData.appendChild(postContent);
+                    userInfo.appendChild(postData);
+                    userContent.appendChild(userInfo);
+                    postBox.appendChild(userContent);
+
+                    bookRelease.appendChild(postBox);
+                });
+            })
+            .catch(error => {
+                console.error('Erro ao buscar e exibir anotações:', error);
             });
-        }
 
-        function getCookie(name) {
-            const value = `; ${document.cookie}`;
-            const parts = value.split(`; ${name}=`);
-            if (parts.length === 2) return parts.pop().split(';').shift();
-        }
-    });
 
-    </script>
+    }
+
+    function checkBookId() {
+        const bookId = bookSavedIdInput.value;
+
+        if (bookId) {
+            fetchAndDisplayAnnotations(bookId);
+            bookSavedIdInput.removeEventListener('input', checkBookId);
+        }
+    }
+
+    if (bookSavedIdInput) {
+        bookSavedIdInput.addEventListener('input', checkBookId);
+    }
+
+    if (bookSavedIdInput && bookKeyInput) {
+        const bookKey = bookKeyInput.value;
+
+        if (bookKey) {
+            const token = getCookie('AuthToken');
+
+            const requestOptions = {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'token': `${token}`
+                }
+            };
+
+            fetch(`https://localhost:5226/api/savedbooks/${bookKey}`, requestOptions)
+                .then(response => {
+                    if (response.status === 404) {
+                        const anotacaoCampo = document.querySelector('.anotacao-campo');
+                        if (anotacaoCampo) {
+                            anotacaoCampo.style.display = 'none';
+                        }
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data && data.id) {
+                        bookSavedIdInput.value = data.id;
+                        fetchAndDisplayAnnotations(data.id); // Adicionando a chamada da função aqui
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching book ID:', error);
+                });
+        }
+    }
+
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+});
+
+        </script>
 
 </body>
 </html>

@@ -8,6 +8,7 @@ using NLog;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Linq;
+using System.Text;
 
 namespace webleitour.Container.Controllers
 {
@@ -123,9 +124,53 @@ namespace webleitour.Container.Controllers
 
 
 
-        public async Task<ActionResult> Annotation()
+        [HttpPost]
+        public async Task<ActionResult> CreateAnnotation(string annotationText, int bookSavedId, string bookIsbn10, string bookIsbn13)
         {
-            return View();
+            if (Request.Cookies["AuthToken"] != null)
+            {
+                string token = Request.Cookies["AuthToken"].Value;
+
+                var annotationData = new
+                {
+                    createdDate = DateTime.UtcNow,
+                    annotationId = 0,
+                    savedBookId = bookSavedId,
+                    annotationText = annotationText,
+                    alteratedDate = DateTime.UtcNow
+                };
+
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("https://localhost:5226/");
+                    client.DefaultRequestHeaders.Clear();
+                    client.DefaultRequestHeaders.Add("token", token);
+
+                    var content = new StringContent(
+                        Newtonsoft.Json.JsonConvert.SerializeObject(annotationData),
+                        Encoding.UTF8,
+                        "application/json"
+                    );
+                    logger.Info($"RESPONSE CONTENT {content}");
+
+
+                    HttpResponseMessage response = await client.PostAsync("api/annotations/savedBook/" + bookSavedId, content);
+                    logger.Info($"RESPONSE BOOKPAGE {response}");
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("BookPage", new { ISBN = bookIsbn10 });
+                    }
+                    else
+                    {
+                        return RedirectToAction("BookPage", new { ISBN = bookIsbn10 });
+                    }
+                }
+            }
+            else
+            {
+                return RedirectToAction("BookPage", new { ISBN = bookIsbn10 });
+            }
         }
     }
 }
