@@ -30,9 +30,10 @@ Por favor, leia o [COLABORACAO.md](https://gist.github.com/usuario/linkParaInfoS
 
 ## ✒️ Autores
 
-* *Lauan Amorim* - Trabalho Inicial - [Lauan Amorim](https://github.com/LauanAmorim)
+* *Lauan Amorim* - Trabalho Inicial/Fullstack - [Lauan Amorim](https://github.com/LauanAmorim)
 * *Lucas Rabaquim* - API - [Lucas Rabaquim](https://github.com/LucasRabaquim)
 * *Luiz Gustavo* - Design UX/UI - [Luiz Gustavo](https://github.com/zVeran)
+* *Lucas Gabriel* - Front-end - [Lucas Gabriel](https://github.com/macedolg)
 
 ---
 ⌨️ Template por [Armstrong Lohãns](https://gist.github.com/lohhans) 😊
